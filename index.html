@@ -30,7 +30,21 @@
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/main.css" />
 
+    <!-- https://dev.to/maciejtrzcinski/100vh-problem-with-ios-safari-3ge9 -->
+    <script>
+      const appHeight = () => {
+        const doc = document.documentElement;
+        doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+      };
+      window.addEventListener("resize", appHeight);
+      appHeight();
+    </script>
+
     <style>
+      :root {
+        --app-height: 100%;
+      }
+
       body {
         background-color: #295b6e;
         font-family: "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
@@ -42,6 +56,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        height: var(--app-height);
       }
     </style>
   </head>
